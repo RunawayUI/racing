@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE EDIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- font audiowide -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body>
+<div th:each="el : ${accdt}">
+<div th:insert="blocks/header :: header"></div>
+<div class="container mt-5 mb-5">
+        <h1>Edit info</h1>
+<!--    <form action="/profile1/edit" method="post">-->
+
+    <form  method="post">
+            <input type="text" th:value="${el.tel}" name="tel" placeholder="Enter your pfone" class="form-control"><br>
+            <input type="text" th:value="${el.firstName}"name="firstName" placeholder="Enter your lastname" class="form-control"><br>
+            <input type="text" th:value="${el.lastName}"name="lastName" placeholder="Enter your lastname" class="form-control"><br>
+            <input type="text" th:value="${el.email}"name="email" placeholder="Enter your email" class="form-control"><br>
+            <textarea name="about" placeholder="Enter text about you" class="form-control" th:text="${el.about}"/><br>
+            <button type="submit">Update info</button>
+    </form>
+
+
+</div>
+</div>
+</body>
+</html>
