@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/globals.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>trenings</title>
+</head>
+<body>
+<div th:each="el : ${accdt}">
+<div th:insert="blocks/header :: header"></div>
+    <div class="nt-box">
+    <div class="nt-box-info">
+    <form  method="post">
+        <p class="nt-box-loc">If u want join train put Idraceway in</p>
+        <input type="text" th:value="${el.active}" name="active"  class="form-control"><br>
+        <button type="submit">Update info</button>
+    </form>
+    </div>
+    </div>
+</div>
+<section  th:each="el : ${tmtbl}" th:attr="data-sort=${el.id}" class="next-train  ">
+    <div class="container">
+        <h2 class="nt-title">Next train</h2>
+        <div class="nt-box">
+            <div class="nt-box-info">
+                <p th:text="${el.id}" class="nt-box-teacher"/>
+                <p th:text="${el.name}" class="nt-box-teacher"/>
+                <p  th:text="${el.date}" class="nt-box-loc"/>
+
+            </div>
+            <div class="nt-box-img">
+                <img src="/img/track.png" alt="track">
+            </div>
+        </div>
+    </div>
+</section>
+<button class="page-btn-1">1</button>
+<button class="page-btn-2">2</button>
+<script>
+    let areas = document.querySelectorAll('section');
+    console.log(areas)
+    areas[1].style.display = 'none';
+
+    let btn1 = document.querySelector('.page-btn-1');
+    let btn2 = document.querySelector('.page-btn-2');
+
+    btn1.onclick = function () {
+        areas[1].style.display = 'none';
+        areas[0].style.display = 'block';
+    }
+    btn2.onclick = function () {
+        areas[0].style.display = 'none';
+        areas[1].style.display = 'block';
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<div th:fragment="header">
+  <link rel="stylesheet" href="/../css/globals.css">
+  <link rel="stylesheet" href="/../css/nav.css">
+<header class="header">
+  <div class="container">
+    <a th:href="'/profile/'+ ${el.id}" class="logo"><img src="/img/f1-logo-white.png" alt="f1"></a>
+    <nav class="nav">
+      <ul class="nav-list">
+<!--        <li class="nav-list-item active"><a href="/profile/">Profile</a></li>-->
+<!--        <li class="nav-list-item"><a href="/license">license</a></li>-->
+        <li class="nav-list-item"><a th:href="'/profile/'+ ${el.id}">Profile</a></li>
+        <li class="nav-list-item"><a th:href="'/license/'+ ${el.id}">License</a></li>
+<!--        <li class="nav-list-item"><a href="#">Teams</a></li>-->
+<!--        <li class="nav-list-item"><a href="#">Chats</a></li>-->
+<!--        <li class="nav-list-item"><a href="#">Circuits</a></li>-->
+        <li class="nav-list-item"><a th:href="'/train/'+ ${el.id}">Schedule</a></li>
+         <li class="nav-list-item"><a th:href="'/profile/'+ ${el.id}+'/edit'">Edit</a></li>
+          
+
+      </ul>
+    </nav>
+
+  </div>
+</header>
+</div>

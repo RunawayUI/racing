@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- font audiowide -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/custom.css">
+
+</head>
+<body>
+<div th:each="el : ${accdt}">
+<div th:insert="blocks/header :: header"></div>
+
+<!--<div th:each="el : ${accdt}">-->
+<section class="profile">
+  <div class="container">
+    <div class="profile-img">
+<!--      <img src="/img/avatars/${el.link_pic}.jpg" alt="profile">-->
+      <img src="/img/George.jpg" alt="profile">
+      <div class="profile-socials">
+        <a th:email="${el.email}">
+          <img src="/img/email.png" alt="mail">
+        </a>
+        <a  href="#">
+          <img src="/img/telephone.png" alt="mail">
+        </a>
+        <a th:href="${el.vk}">
+          <img src="/img/vk.png" alt="mail">
+        </a>
+        <a th:href="${el.inst}">
+          <img src="/img/instagram.png" alt="mail">
+        </a>
+<!--        <a href="#">-->
+<!--          <img src="img/email.png" alt="mail">-->
+<!--        </a>-->
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="profile-info-top">
+        <h2 class="section-title">Profile</h2>
+        <div class="profile-helmet">
+          <img class="helmet-img" src="/img/1646824823304.png" alt="helmet">
+        </div>
+      </div>
+
+      <div class="profile-info-bottom">
+        <h2 th:text=" ${el.firstName} + ${el.lastName} " class="profile-info-name"/>
+        <ul class="profile-info-list">
+          <li class="profile-info-line">
+            <span class="profile-info-key">Team</span>
+            <span th:text=" ${el.team} "class="profile-info-value"/>
+          </li>
+          <li class="profile-info-line">
+            <span class="profile-info-key">License number</span>
+            <span th:text="'№' + ${el.points}" class="profile-info-value"/>
+          </li>
+        </ul>
+<!--        <button>-->
+<!--          <a th:href="'/license/'+ ${el.id}" class="nt-box-btn">License</a>-->
+<!--        </button>-->
+
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cool-bg">
+  <div class="about container">
+    <h2 class="section-title about-title">About</h2>
+    <div class="about-border"></div>
+    <div class="about-info">
+      <p th:text=" ${el.about}" class="about-text"/>
+
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

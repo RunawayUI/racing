@@ -1,0 +1,46 @@
+.license {
+	padding-top: 60px;
+}
+
+.fia-logo {
+	width: 262px;
+	height: 262px;
+}
+
+.fia-logo img {
+	display: block;
+	width: 100%;
+}
+
+.license>.container {
+	display: flex;
+}
+
+.license__info {
+	margin-left: 100px;
+	width: 40%;
+}
+
+.license__info_top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.license__title {
+	font-size: 35px;
+	margin-bottom: 50px;
+}
+
+.license__number {
+	font-size: 35px;
+	font-weight: 700;
+}
+
+.license__fio {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.license__cat {
+	font-size: 30px;
+}

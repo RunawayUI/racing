@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" href="/css/globals.css">
+  	<link rel="stylesheet" href="/css/license.css">
+
+	<title>License</title>
+</head>
+<body>
+<div th:each="el : ${accdt}">
+	<div th:insert="blocks/header :: header"></div>
+	<section class="license">
+		<div class="container">
+			<div class="fia-logo">
+				<img src="/img/FIA-logo.png" alt="">
+			</div>
+
+			<div th:each="el : ${accdt}" class="license__info">
+				<div class="license__info_top">
+					<h1 class="license__title">Лицензия</h1>
+					<p th:text="'№' + ${el.points}"  class="license__number"/>
+				</div>
+				
+				<p th:text="'Name: ' + ${el.firstName}"  class="license__fio"/><br>
+				<p th:text="'Lastname: ' +${el.lastName}"  class="license__fio"/>
+<!--				<p class="license__cat">Formula-1</p><br>-->
+
+				<a class="license__cat" href="https://www.raceronrails.com/getting-an-fia-racing-license/"> Update license</a>
+			</div>
+<!--			<button>-->
+<!--<a th:href="'/profile/'+ ${el.id} " class="nt-box-btn">Go back to profile</a>-->
+<!--			</button>-->
+
+		</div>
+	</section>
+</div>
+</body>
+</html>
