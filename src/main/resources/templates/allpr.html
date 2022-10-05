@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/globals.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>alluserts</title>
+</head>
+<body>
+<div style="border: 1px solid">
+    <h4>sort by id</h4>
+    <button id="sort-down">sort-down</button>
+    <button id="sort-up">sort-up</button>
+</div>
+<div style="border: 1px solid">
+    <h4>sort by Name</h4>
+    <button id="sort-name-down">sort-down</button>
+    <button id="sort-name-up">sort-up</button>
+</div>
+
+<div class="blocks-to-sort">
+<div  th:each="el : ${accdt}" th:attr="data-sort=${el.id},data-name=${el.firstName}">
+
+    <div th:insert="blocks/header :: header"></div>
+    <section class="cool-bg">
+        <div class="about container">
+            <h2 class="section-title about-title">All USERS</h2>
+            <div class="about-border"></div>
+            <div class="about-info">
+                <p th:text="'id='+ ${el.id}" class="about-text"/>
+                <p th:text="'Name: '+ ${el.firstName}" class="about-text"/>
+                <p th:text="'Lastname: '+${el.lastName}" class="about-text"/>
+                <p ></p>
+            </div>
+        </div>
+    </section>
+
+</div>
+</div>
+<script>
+
+
+    document.querySelector('#sort-down').onclick = mySortDown;
+    document.querySelector('#sort-up').onclick = mySortUp;
+    document.querySelector('#sort-name-down').onclick = mySortNameDown;
+    document.querySelector('#sort-name-up').onclick = mySortNameUp;
+
+    function mySortDown() {
+        let sortBlocks = document.querySelector('.blocks-to-sort');
+
+        for (let i = 0; i < sortBlocks.children.length; i++) {
+            for (let j = i; j < sortBlocks.children.length; j++) {
+                if (+sortBlocks.children[i].getAttribute('data-sort') > +sortBlocks.children[j].getAttribute('data-sort')) {
+                    let replacedNode = sortBlocks.replaceChild(sortBlocks.children[j], sortBlocks.children[i]);
+                    insertAfter(replacedNode, sortBlocks.children[i]);
+                }
+            }
+        }
+    }
+
+    function mySortUp() {
+        let sortBlocks = document.querySelector('.blocks-to-sort');
+
+        for (let i = 0; i < sortBlocks.children.length; i++) {
+            for (let j = i; j < sortBlocks.children.length; j++) {
+                if (+sortBlocks.children[i].getAttribute('data-sort') < +sortBlocks.children[j].getAttribute('data-sort')) {
+                    let replacedNode = sortBlocks.replaceChild(sortBlocks.children[j], sortBlocks.children[i]);
+                    insertAfter(replacedNode, sortBlocks.children[i]);
+                }
+            }
+        }
+    }
+
+    function mySortNameDown() {
+        let sortBlocks = document.querySelector('.blocks-to-sort');
+
+        for (let i = 0; i < sortBlocks.children.length; i++) {
+            for (let j = i; j < sortBlocks.children.length; j++) {
+                if (sortBlocks.children[i].getAttribute('data-name') > sortBlocks.children[j].getAttribute('data-name')) {
+                    let replacedNode = sortBlocks.replaceChild(sortBlocks.children[j], sortBlocks.children[i]);
+                    insertAfter(replacedNode, sortBlocks.children[i]);
+                }
+            }
+        }
+    }
+
+    function mySortNameUp() {
+        let sortBlocks = document.querySelector('.blocks-to-sort');
+
+        for (let i = 0; i < sortBlocks.children.length; i++) {
+            for (let j = i; j < sortBlocks.children.length; j++) {
+                if (sortBlocks.children[i].getAttribute('data-name') < sortBlocks.children[j].getAttribute('data-name')) {
+                    let replacedNode = sortBlocks.replaceChild(sortBlocks.children[j], sortBlocks.children[i]);
+                    insertAfter(replacedNode, sortBlocks.children[i]);
+                }
+            }
+        }
+    }
+
+    function insertAfter(elem, refElem) {
+        return refElem.parentNode.insertBefore(elem, refElem.nextSibling)
+    }
+</script>
+</body>
+</html>
+
